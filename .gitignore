@@ -12,3 +12,4 @@ test/dummy/tmp/
 vendor/bundle
 node_modules
 package.json
+.byebug_history

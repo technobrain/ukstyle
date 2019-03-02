@@ -17,6 +17,7 @@ generate scss theme file to app/assets/stylesheets directory.
 
 ```scss
 # application.scss
+
 @import 'ukstyle-theme.scss';
 ```
 
@@ -33,14 +34,14 @@ And append following code to app/assets/javascripts/application.js
 Generate standard 2 column layout with navigation bar.
 
 ```bash
-$ rails generate uk3style:layout
+$ rails generate ukstyle:layout
 ```
 Then generate view/layout/admin.html.erb
 
 If you want another namespace, use option --namespace=<NAMESPACE>
 
 ```bash
-$ rails generate uk3style:layout --namespace=doc
+$ rails generate ukstyle:layout --namespace=doc
 ```
 
 ### Generate nav menu on side bar.
@@ -48,14 +49,14 @@ $ rails generate uk3style:layout --namespace=doc
 Initialize navmenu.
 
 ```bash
-$ rails generate uk3style:navmenu:init
+$ rails generate ukstyle:navmenu:init
 ```
 Add navmenu.
 
-uk3style:navmenu:add <Layout> <Model>
+ukstyle:navmenu:add <Layout> <Model>
 
 ```bash
-$ rails generate uk3style:navmenu:add admin Product
+$ rails generate ukstyle:navmenu:add admin Product
 ```
 Then navigation was appended to side bar as admin_products_path
 
