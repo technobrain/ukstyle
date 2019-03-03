@@ -9,7 +9,15 @@ module Ukstyle
       destination File.expand_path(Rails.root)
 
       setup do
-        # FileUtils.remove_file initializer_file, force: true
+        FileUtils.remove_file layout
+        FileUtils.rm_rf shared_dir
+
+        run_generator [file_name]
+      end
+
+      teardown do
+        # FileUtils.remove_file layout
+        # FileUtils.rm_rf shared_dir
       end
 
       def file_name
@@ -20,14 +28,18 @@ module Ukstyle
         @layout ||= Rails.root.join('app', 'views', 'layouts', "#{file_name}.html.erb")
       end
 
-      def shared_side_bar
-        @shared_dir ||= Rails.root.join('app', 'views', 'shared', file_name, '_sidebar_nav.html.erb')
+      def shared_dir
+        Rails.root.join('app', 'views', 'shared')
+      end
+
+      def sidebar_nav
+        @sidebar_nav ||= File.expand_path("#{file_name}/_sidebar_nav.html.erb", shared_dir)
       end
 
       test 'create an initializer file' do
-        run_generator [file_name]
+        # run_generator [file_name]
         assert_file layout
-        assert_file shared_side_bar
+        assert_file sidebar_nav
       end
     end
   end

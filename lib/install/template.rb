@@ -6,13 +6,12 @@ say 'Installing UIkit'
 run 'yarn add uikit'
 say 'UIkit successfully installed 🎉 🍰', :green
 
-# Stylesheets
+# Copy stylesheets
 copy_file "#{__dir__}/app/assets/stylesheets/application.scss", 'app/assets/stylesheets/application.scss'
 
 original_css_file = "#{destination_root}/app/assets/stylesheets/application.css"
 if FileTest.exist?(original_css_file)
   inject_into_file 'app/assets/stylesheets/application.scss', before: "@import 'ukstyle-theme.scss';" do
-    debugger
     File.read(original_css_file).to_s
   end
 end

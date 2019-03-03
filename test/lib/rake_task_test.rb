@@ -2,12 +2,20 @@ require 'test_helper'
 require "rails"
 
 class RakeTaskTest < ActiveSupport::TestCase
-  setup do
+  class << self
+    # Class instance variable
+    attr_accessor :task_executed
+  end
+
+  def setup
+    return if self.class.task_executed
+
+    FileUtils.rm_rf examples_dir
+
     Rails.application.load_tasks
     Rake::Task['ukstyle:install'].invoke
     Rake::Task['ukstyle:install'].reenable
-
-    # FileUtils.remove_file initializer_file, force: true
+    self.class.task_executed = true
   end
 
   def test_app_path
@@ -26,6 +34,10 @@ class RakeTaskTest < ActiveSupport::TestCase
     "#{test_app_path}/app/assets/stylesheets/application.scss"
   end
 
+  def examples_dir
+    "#{test_app_path}/app/assets/stylesheets/example"
+  end
+
   test 'rake tasks' do
     output = Dir.chdir(test_app_path) { `rake -T` }
     assert_includes output, 'ukstyle:install'
@@ -40,6 +52,10 @@ class RakeTaskTest < ActiveSupport::TestCase
   end
 
   test 'generate stylesheets scss' do
-    assert FileTest.exist? application_scss_path
+    assert FileTest.file? application_scss_path
+  end
+
+  test 'generate scss examples' do
+    assert FileTest.directory? examples_dir
   end
 end
