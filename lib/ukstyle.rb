@@ -1,4 +1,6 @@
-require "ukstyle/railtie"
+# require "ukstyle/railtie"
+require "ukstyle/engine"
+
 require 'rails/generators'
 
 require 'ukstyle/generators/initializer_generator'

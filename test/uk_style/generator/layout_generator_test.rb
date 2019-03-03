@@ -9,9 +9,8 @@ module Ukstyle
       destination File.expand_path(Rails.root)
 
       setup do
-        FileUtils.remove_file layout
+        FileUtils.remove_file layout, force: true
         FileUtils.rm_rf shared_dir
-
         run_generator [file_name]
       end
 

@@ -2,7 +2,6 @@ namespace :ukstyle do
   desc "Verifies if Node.js is installed"
   task :check_node do
     begin
-      debugger
       node_version = `node -v || nodejs -v`
       raise Errno::ENOENT if node_version.blank?
 

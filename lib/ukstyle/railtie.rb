@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'rake'
+require 'byebug'
 
 module Ukstyle
   class Railtie < ::Rails::Railtie
