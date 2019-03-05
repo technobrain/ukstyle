@@ -4,7 +4,7 @@ module Ukstyle
   module Generators
     class LayoutGenerator < Rails::Generators::NamedBase
       desc "このジェネレータはapp/views/layoutsにレイアウトファイルを作成します"
-      source_root File.expand_path('templates/views/erb/', __dir__)
+      source_root File.expand_path('templates/erb/', __dir__)
 
       def copy_layout_file
         dest = Rails.root.join('app', 'views', 'layouts', "#{file_name}.html.erb")

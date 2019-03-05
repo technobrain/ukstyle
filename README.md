@@ -34,14 +34,14 @@ And append following code to app/assets/javascripts/application.js
 Generate standard 2 column layout with navigation bar.
 
 ```bash
-$ rails generate ukstyle:layout
+$ rails generate ukstyle:layout:init
 ```
 Then generate view/layout/admin.html.erb
 
 If you want another namespace, use option --namespace=<NAMESPACE>
 
 ```bash
-$ rails generate ukstyle:layout --namespace=doc
+$ rails generate ukstyle:layout:init --namespace=doc
 ```
 
 ### Generate nav menu on side bar.
@@ -59,6 +59,30 @@ ukstyle:navmenu:add <Layout> <Model>
 $ rails generate ukstyle:navmenu:add admin Product
 ```
 Then navigation was appended to side bar as admin_products_path
+
+### Generate template basic scaffold
+
+```bash
+$ rails generate ukstyle:basic your_theme
+```
+Then copy templates to /lib/template/erb/your_theme/scaffold
+
+If you want to use paginate,
+Use option --paginate  
+
+### Generate template scaffold for tiny model
+
+```bash
+$ rails generate ukstyle:tiny
+```
+Then copy templates to /lib/template/erb/tiny
+
+### Generate template scaffold for nested model
+
+```bash
+$ rails generate ukstyle:nested_model
+```
+Then copy templates to /lib/template/erb/nested_model
 
 ### Generate Scaffold with uikit3 style template
 
