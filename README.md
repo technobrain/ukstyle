@@ -29,6 +29,32 @@ And append following code to app/assets/javascripts/application.js
 //= require uikit-icons.min.js
 ...
 ```
+
+### Generate scaffold template
+
+```bash
+$ rails generate ukstyle:views
+```
+Then copy templates to /lib/template/erb/scaffold
+
+### Generate scaffold template for your custom theme
+
+```bash
+$ rails generate ukstyle:views your_theme
+```
+Then copy templates to /lib/template/your_theme/erb/scaffold
+
+### Generate Scaffold with uikit3 style
+
+Same as original generate command.
+
+```bash
+$ rails generate scaffold Admin::Product code:string name:string specs:text
+```
+#### Options
+ --theme=your_theme  
+ --skip_layout
+
 ### Generate admin layout
 
 Generate standard 2 column layout with navigation bar.
@@ -59,38 +85,7 @@ ukstyle:navmenu:add <Layout> <Model>
 $ rails generate ukstyle:navmenu:add admin Product
 ```
 Then navigation was appended to side bar as admin_products_path
-
-### Generate template basic scaffold
-
-```bash
-$ rails generate ukstyle:basic your_theme
-```
-Then copy templates to /lib/template/erb/your_theme/scaffold
-
-If you want to use paginate,
-Use option --paginate  
-
-### Generate template scaffold for tiny model
-
-```bash
-$ rails generate ukstyle:tiny
-```
-Then copy templates to /lib/template/erb/tiny
-
-### Generate template scaffold for nested model
-
-```bash
-$ rails generate ukstyle:nested_model
-```
-Then copy templates to /lib/template/erb/nested_model
-
-### Generate Scaffold with uikit3 style template
-
-Same as original generate command.
-
-```bash
-$ rails generate scaffold Admin::Product code:string name:string specs:text
-``` 
+ 
 
 ## Installation
 Add this line to your application's Gemfile:
