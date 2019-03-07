@@ -2,8 +2,8 @@
 
 module Ukstyle
   module Generators
-    class BasicGenerator < Rails::Generators::NamedBase
-      desc "このジェネレータはapp/views/layoutsにレイアウトファイルを作成します"
+    class ThemeGenerator < Rails::Generators::NamedBase
+      desc "このジェネレータはlib/templates/your_themeにテンプレートファイルを作成します"
       source_root File.expand_path('templates', __dir__)
 
       def copy_templates
