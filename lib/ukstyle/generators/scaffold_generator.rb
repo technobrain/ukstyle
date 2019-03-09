@@ -8,13 +8,14 @@ module Ukstyle
     class ScaffoldGenerator < Rails::Generators::ScaffoldGenerator
       desc "このジェネレータはlib/templates/your_themeのテンプレートを使用してScaffoldGeneratorを実行します"
 
-      
-      class_option :theme
+      class_option :theme, type: :string
 
       def initialize(*args)
-        options = args.extract_optins!
-        return unless optins[:theme]
-        Rails::Generators.template_path.unshift(theme_path)
+        super
+
+        return unless options[:theme]
+        
+        Rails::Generators.templates_path.unshift(theme_path)
       end
 
       hook_for :scaffold
