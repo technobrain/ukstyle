@@ -1,0 +1,7 @@
+{
+  "name": "dummy",
+  "private": true,
+  "dependencies": {
+    "uikit": "^3.0.3"
+  }
+}

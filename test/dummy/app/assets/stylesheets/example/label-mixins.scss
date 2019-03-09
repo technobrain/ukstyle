@@ -1,0 +1,68 @@
+//
+// Component: Label
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+
+$label-muted-background:                            $global-muted-background;
+$label-muted-color:                                 $global-muted-color;
+
+
+//
+// UIkit Original theme
+//
+
+// $label-border-radius:                            2px !default;
+// $label-text-transform:                           uppercase !default;
+
+
+// Component
+// ========================================================================
+
+
+
+
+// Color modifiers
+// ========================================================================
+
+// @mixin hook-label-success(){}
+
+// @mixin hook-label-warning(){}
+
+// @mixin hook-label-danger(){}
+
+// TB
+// @mixin hook-label-muted(){}
+
+
+// Miscellaneous
+// ========================================================================
+
+//
+// TB
+//
+
+@mixin hook-label-misc(){
+
+  /*
+  * TB
+  * Muted label
+  */
+  
+  .uk-label-muted {
+      background-color: $label-muted-background;
+      color: $label-muted-color;
+      @if(mixin-exists(hook-label-muted)) {@include hook-label-muted();}
+  }
+
+}
+
+
+// Inverse
+// ========================================================================
+
+// @mixin hook-inverse-label(){}
