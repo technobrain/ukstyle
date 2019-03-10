@@ -22,8 +22,7 @@ module Ukstyle
       end
 
       def start
-        require "rails/generators/erb/generators/scaffold_generator"
-        debugger
+        require "rails/generators/erb/scaffold/scaffold_generator"
         Erb::Generators::ScaffoldGenerator.include Ukstyle::Generators::StyleHelpers
         require "rails/generators/rails/scaffold/scaffold_generator"
         Rails::Generators::ScaffoldGenerator.start
