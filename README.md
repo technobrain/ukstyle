@@ -40,7 +40,7 @@ Then copy templates to /lib/template/erb/scaffold
 ### Generate scaffold template for your custom theme
 
 ```bash
-$ rails generate ukstyle:views your_theme
+$ rails generate ukstyle:theme your_theme
 ```
 Then copy templates to /lib/template/your_theme/erb/scaffold
 

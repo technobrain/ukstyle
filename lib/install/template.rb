@@ -24,6 +24,7 @@ remove_file 'app/assets/stylesheets/application.css'
 
 say 'Inject UIkit javascript path into app/assets/javascripts/application.js'
 inject_into_file 'app/assets/javascripts/application.js', after: "//= require rails-ujs#{$RS}" do <<-'JS'.strip_heredoc
+
 //= require uikit/dist/js/uikit.min.js
 //= require uikit/dist/js/uikit-icons.min.js
 JS

@@ -1,11 +1,31 @@
-<p id="notice"><%%= notice %></p>
+<div class="uk-container uk-padding">
 
-<% attributes.reject(&:password_digest?).each do |attribute| -%>
-<p>
-  <strong><%= attribute.human_name %>:</strong>
-  <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
-</p>
+  <%% if notice.present? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p id="notice"><%%= notice %></p>
+  </div>
+  <%% end %>
 
-<% end -%>
-<%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %> |
-<%%= link_to 'Back', <%= index_helper %>_path %>
+  <ul class="uk-subnav uk-subnav-divider">
+    <li>
+      <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %>
+    </li>
+    <li>
+      <%%= link_to 'Back', <%= index_helper %>_path %>
+    </li>
+  </ul>
+
+  <% attributes.reject(&:password_digest?).each do |attribute| -%>
+  <div uk-grid>
+    <div>
+      <strong><%= attribute.human_name %>:</strong>
+    </div>
+    <div>
+      <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
+    </div>
+  </div>
+
+
+  <% end -%>
+</div>
