@@ -2,7 +2,6 @@
 
 require 'rails/generators/base'
 require 'ukstyle/generators/style_helpers'
-require 'byebug'
 
 module Ukstyle
   module Generators
@@ -12,7 +11,6 @@ module Ukstyle
 
       class_option :theme, type: :string
 
-
       def initialize(*args)
         super
         @args = args
@@ -21,12 +19,14 @@ module Ukstyle
         Rails::Generators.templates_path.unshift(theme_path)
       end
 
-      def start
-        require "rails/generators/erb/scaffold/scaffold_generator"
-        Erb::Generators::ScaffoldGenerator.include Ukstyle::Generators::StyleHelpers
-        require "rails/generators/rails/scaffold/scaffold_generator"
-        Rails::Generators::ScaffoldGenerator.start
-      end
+      # def start
+      #   require "rails/generators/erb/scaffold/scaffold_generator"
+      #   Erb::Generators::ScaffoldGenerator.include Ukstyle::Generators::StyleHelpers
+      #   require "rails/generators/rails/scaffold/scaffold_generator"
+      #   Rails::Generators::ScaffoldGenerator.start
+      # end
+      hook_for :model
+      hook_for :scaffold_controller
 
       private
 
