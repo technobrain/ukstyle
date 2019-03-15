@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+
+# require 'rake'
+# require 'byebug'
+
+#   class MyRailtie < Rails::Railtie
+#     # Customize the ORM
+#     config.app_generators.orm :my_railtie_orm
+#
+#     # Add a to_prepare block which is executed once in production
+#     # and before each request in development.
+#     config.to_prepare do
+#       MyRailtie.setup!
+#     end
+#   end
+
+module Ukstyle
+  class Railtie < ::Rails::Railtie
+    # Load tasks
+    # Dir.glob("#{__dir__}/../tasks/**/*.rake").each { |file| load file }
+    config.app_generators.orm :ukstyle
+
+  end
+end
