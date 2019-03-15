@@ -5,6 +5,5 @@ module Ukstyle
 
     # OK
     Rails::Generators.options.merge!(ukstyle: { orm: :active_record })
-
   end
 end
