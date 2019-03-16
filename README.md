@@ -8,12 +8,15 @@ How to use my plugin.
 
 Install [Uikit](https://getuikit.com/) css framework as node module.
 
+There's a install task that install UIkit.  
+UIkit is a lightweight and modular front-end framework for developing fast and powerful web interfaces.  
+SEE: https://getuikit.com/
+
 ```bash
 $ rails ukstyle:install
 ```
-Then generate initializer file to config/initializers/ukstyle.rb,  
-Rename application.css to application.scss in app/assets/stylesheets directory,
-generate scss theme file to app/assets/stylesheets directory.  
+Then rename application.css to application.scss in app/assets/stylesheets directory,
+and generate following scss theme file into app/assets/stylesheets directory.  
 
 ```scss
 # application.scss
@@ -32,24 +35,29 @@ And append following code to app/assets/javascripts/application.js
 
 ### Generate scaffold template
 
+To create custom template files, execute generator ukstyle:views.  
+Then generate default views into /lib/template directory.
+
 ```bash
 $ rails generate ukstyle:views
 ```
-Then copy templates to /lib/template/erb/scaffold
 
-### Generate scaffold template for your custom theme
+### Custom themes
+
+You can generate templates with sub directory that name as theme.
 
 ```bash
 $ rails generate ukstyle:theme your_theme
 ```
-Then copy templates to /lib/template/your_theme/erb/scaffold
+Then generate templates into /lib/template/your_theme/.
+And you can customize as you like.
 
-### Generate Scaffold with uikit3 style
+### Using customized theme
 
-Same as original generate command.
+It's simple.  
 
 ```bash
-$ rails generate scaffold Admin::Product code:string name:string specs:text
+$ rails generate ukstyle:scaffold Admin::Product code:string name:string specs:text --theme=your_theme
 ```
 #### Options
  --theme=your_theme  
@@ -70,7 +78,7 @@ If you want another namespace, use option --namespace=<NAMESPACE>
 $ rails generate ukstyle:layout:init --namespace=doc
 ```
 
-### Generate nav menu on side bar.
+### TODO: Generate nav menu on side bar.
 
 Initialize navmenu.
 
@@ -87,7 +95,7 @@ $ rails generate ukstyle:navmenu:add admin Product
 Then navigation was appended to side bar as admin_products_path
  
 
-## Installation
+## TODO: Installation
 Add this line to your application's Gemfile:
 
 ```ruby
