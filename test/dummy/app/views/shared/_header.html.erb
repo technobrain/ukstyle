@@ -1,0 +1,30 @@
+<div class="uk-navbar-left">
+  <%= link_to 'LOGO', '/', class: "uk-navbar-item uk-logo uk-visible@m" %>
+  <%= yield :offcanvas_content %>
+</div>
+<div class="uk-navbar-right">
+  <div class="uk-navbar-item">
+    <%= yield :search %>
+  </div>
+
+  <ul class="uk-navbar-nav">
+    <% if defined?(current_user) && current_user %>
+    <li>
+      <%= link_to username(current_user), '#' %>
+      <div class="uk-navbar-dropdown">
+        <ul class="uk-nav uk-navbar-dropdown-nav">
+          <% if true || current_user.admin? %>
+          <li><%= link_to t('nav.admin'), admin_path %></li>
+          <% end %>
+          <li><%= link_to t('nav.profile'), current_user %></li>
+          <li><%= link_to 'Sign out', sign_out_path, data: { method: :post } %></li>
+        </ul>
+      </div>
+    </li>
+    <% else %>
+    <% if defined?(sign_in_path) %>
+    <li><%= link_to 'Sign in', sign_in_path %></li>
+    <% end %>
+    <% end %>
+  </ul>
+</div>

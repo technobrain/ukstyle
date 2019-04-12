@@ -1,0 +1,52 @@
+<%% content_for :sidebar_nav do %>
+<%%= render '<%= ['shared', @ns, 'nav_menu'].join('/') %>' %>
+<%% end %>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%%= yield :title %></title>
+    <%%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%%= stylesheet_link_tag    "application", media: "all" %>
+    <%%= javascript_include_tag "application" %>
+  </head>
+
+  <body>
+    <%%= yield :offcanvas %>
+
+    <nav uk-sticky class="uk-navbar-container uk-sticky uk-sticky-fixed" uk-navbar>
+      <%%= render 'shared/header' %>
+    </nav>
+
+    <div class="tb-sidebar-left">
+      <div class="uk-padding-small">
+      <%%= yield :sidebar_nav %>
+      </div>
+    </div>
+
+
+    <div class="tb-main">
+      <div class="uk-container uk-padding-small">
+
+        <%%= render 'shared/notice' %>
+
+        <div uk-grid>
+          <div class="uk-width-1-2">
+            <h3 class="uk-h3 uk-heading-bullet"><%%= yield :page_title %></h3>
+          </div>
+          <div class="uk-width-1-2">
+            <div class="uk-align-right">
+              <%%= yield :breadcrumb %>
+            </div>
+          </div>
+        </div>
+
+        <%%= yield :subnav %>
+
+        <%%= yield %>
+
+      </div>
+    </div>
+  </body>
+</html>
