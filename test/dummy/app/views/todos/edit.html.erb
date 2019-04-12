@@ -1,0 +1,14 @@
+<div class="uk-container uk-padding">
+
+<h1 class="uk-h3 uk-heading-bullet">Editing Todo</h1>
+
+<ul class="uk-subnav uk-subnav-divider">
+  <li>
+    <%= link_to 'Show', @todo, class: 'uk-link-muted' %>
+  </li>
+  <li>
+    <%= link_to 'Back', todos_path, class: 'uk-link-muted' %>
+  </li>
+</ul>
+
+<%= render 'form', todo: @todo %>
