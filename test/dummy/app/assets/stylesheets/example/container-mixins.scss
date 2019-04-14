@@ -1,0 +1,20 @@
+//
+// Component: Container
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+
+// Miscellaneous
+// ========================================================================
+
+// @mixin hook-container-misc(){}
+@mixin hook-container-misc(){
+  // new rule
+  .uk-navbar-container:not(.uk-navbar-transparent){
+    background: linear-gradient(to left, #28a5f5, #1e87f0) !important;
+  }
+}
