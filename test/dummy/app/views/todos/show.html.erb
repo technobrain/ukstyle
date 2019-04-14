@@ -1,0 +1,59 @@
+<div class="uk-container uk-padding">
+
+  <% if notice.present? %>
+  <div class="uk-alert-primary" uk-alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p id="notice"><%= notice %></p>
+  </div>
+  <% end %>
+
+  <ul class="uk-subnav uk-subnav-divider">
+    <li>
+      <%= link_to 'Edit', edit_todo_path(@todo) %>
+    </li>
+    <li>
+      <%= link_to 'Back', todos_path %>
+    </li>
+  </ul>
+
+    <div uk-grid>
+    <div>
+      <strong>Title:</strong>
+    </div>
+    <div>
+      <%= @todo.title %>
+    </div>
+  </div>
+
+
+    <div uk-grid>
+    <div>
+      <strong>Content:</strong>
+    </div>
+    <div>
+      <%= @todo.content %>
+    </div>
+  </div>
+
+
+    <div uk-grid>
+    <div>
+      <strong>Due date:</strong>
+    </div>
+    <div>
+      <%= @todo.due_date %>
+    </div>
+  </div>
+
+
+    <div uk-grid>
+    <div>
+      <strong>Completed at:</strong>
+    </div>
+    <div>
+      <%= @todo.completed_at %>
+    </div>
+  </div>
+
+
+  </div>
