@@ -8,7 +8,7 @@ module Ukstyle
 
       def copy_layout_file
         dest = Rails.root.join('app', 'views', 'layouts', "#{file_name}.html.erb")
-        copy_file 'layouts/template.html.erb', dest
+        template 'layouts/template.html.erb', dest
       end
 
       def copy_side_bar_file
