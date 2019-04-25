@@ -5,7 +5,6 @@ require "rails/generators/erb"
 module Ukstyle
   module Generators
     class ScaffoldControllerGenerator < Rails::Generators::NamedBase # :nodoc:
-
       desc "このジェネレータはlib/templates/your_themeのテンプレートを使用してScaffoldGeneratorを実行します"
 
       class_option :theme, type: :string
@@ -13,7 +12,7 @@ module Ukstyle
       def initialize(*args)
         super
         @args = args
-        
+
         return unless options[:theme]
         Rails::Generators.templates_path.unshift(theme_path)
 
