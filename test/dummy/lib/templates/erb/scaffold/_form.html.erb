@@ -1,4 +1,4 @@
-<%%= form_with(model: <%= model_resource_name %>, local: true) do |form| %>
+<%%= form_with(model: <%= model_resource_name %>, local: true, class: 'uk-form-horizontal') do |form| %>
   <%% if <%= singular_table_name %>.errors.any? %>
     <div id="error_explanation">
       <h2><%%= pluralize(<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
@@ -12,23 +12,29 @@
   <%% end %>
 
 <% attributes.each do |attribute| -%>
-  <div class="field">
+  <div class="field uk-margin">
 <% if attribute.password_digest? -%>
     <%%= form.label :password %>
-    <%%= form.password_field :password, class: 'uk-input' %>
+    <div class="uk-form-controll">
+      <%%= form.password_field :password, class: '<%= field_style(attribute.field_type) %>' %>
+    </div>
   </div>
 
-  <div class="field">
+  <div class="field uk-margin">
     <%%= form.label :password_confirmation %>
-    <%%= form.password_field :password_confirmation, class: 'uk-input' %>
+    <div class="uk-form-controll">
+      <%%= form.password_field :password_confirmation, class: '<%= field_style(attribute.field_type) %>' %>
+    </div>
 <% else -%>
-    <%%= form.label :<%= attribute.column_name %> %>
-    <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, class="uk-<%= attribute.field_type.to_s.gsub('_button', '').gsub('_', '') %> %>
+    <%%= form.label :<%= attribute.column_name %>, class: 'uk-form-label uk-text-right uk-margin-right' %>
+    <div class="uk-form-controll">
+      <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, <%= attribute.field_type == :date_select ? ' {},' : '' %>class: '<%= field_style(attribute.field_type) %>' %>
+    </div>
 <% end -%>
   </div>
 
 <% end -%>
-  <div class="actions">
-    <%%= form.submit, class: 'uk-button uk-button-primary' %>
+  <div class="actions uk-flex uk-flex-right">
+    <%%= form.submit nil, class: 'uk-button uk-button-primary' %>
   </div>
 <%% end %>
