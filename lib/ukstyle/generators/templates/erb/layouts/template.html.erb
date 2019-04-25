@@ -1,5 +1,5 @@
 <%% content_for :sidebar_nav do %>
-<%%= render ['shared', singular_table_name, 'nav_menu'].join('/') %>
+<%%= render '<%= ['shared', singular_table_name, 'nav_menu'].join('/') %>' %>
 <%% end %>
 
 <!DOCTYPE html>
