@@ -5,6 +5,8 @@ module Ukstyle
     module StyleHelpers
       FIELD_STYLE_MAP = {
         text_field: 'uk-input uk-width-large',
+        number_field: 'uk-input uk-width-large',
+        date_field: 'uk-input uk-width-large',
         password: 'uk-input uk-width-large',
         check_box: 'uk-checkbox',
         radio_botton: 'uk-radio',
