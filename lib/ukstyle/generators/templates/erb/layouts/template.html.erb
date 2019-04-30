@@ -1,5 +1,5 @@
 <%% content_for :sidebar_nav do %>
-<%%= render '<%= ['shared', @ns, 'nav_menu'].join('/') %>' %>
+<%%= render '<%= ['shared', singular_table_name, 'nav_menu'].join('/') %>' %>
 <%% end %>
 
 <!DOCTYPE html>
@@ -8,45 +8,61 @@
     <title><%%= yield :title %></title>
     <%%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%%= stylesheet_link_tag    "application", media: "all" %>
-    <%%= javascript_include_tag "application" %>
+    <meta name="turbolinks-cache-control" content="no-preview">
+
+    <%%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
     <%%= yield :offcanvas %>
 
-    <nav uk-sticky class="uk-navbar-container uk-sticky uk-sticky-fixed" uk-navbar>
+    <nav uk-sticky class="uk-light uk-card uk-card-default uk-card-secondary uk-sticky uk-sticky-fixed"
+                   uk-navbar="mode: click">
       <%%= render 'shared/header' %>
     </nav>
 
-    <div class="tb-sidebar-left">
-      <div class="uk-padding-small">
-      <%%= yield :sidebar_nav %>
+    <div class="uk-grid-collapse" uk-grid>
+      <div class="uk-width-1-6@m uk-width-1-4@s uk-visible@s uk-section-muted uk-padding-small">
+        <div class="uk-height">
+          <%%= yield :sidebar_nav %>
+        </div>
       </div>
-    </div>
 
+      <div class="uk-section-default uk-width-expand uk-margin-large-bottom" uk-height-viewport="expand: true;">
+        <div class="uk-container uk-container-large uk-position-relative">
 
-    <div class="tb-main">
-      <div class="uk-container uk-padding-small">
-
-        <%%= render 'shared/notice' %>
-
-        <div uk-grid>
-          <div class="uk-width-1-2">
-            <h3 class="uk-h3 uk-heading-bullet"><%%= yield :page_title %></h3>
-          </div>
-          <div class="uk-width-1-2">
-            <div class="uk-align-right">
-              <%%= yield :breadcrumb %>
+          <div class="uk-section uk-padding-small">
+            <div id="notice">
+              <%%= render 'shared/notice' %>
             </div>
+
+            <div uk-grid>
+              <div class="uk-width-1-2@m">
+                <h3 class="uk-h3"><%%= yield :page_title %></h3>
+              </div>
+              <div class="uk-width-auto">
+                <div class="uk-align-right">
+                  <%%= yield :breadcrumb %>
+                </div>
+              </div>
+            </div>
+
+            <%%= yield :subnav %>
+
+            <%%= yield %>
+
           </div>
         </div>
 
-        <%%= yield :subnav %>
-
-        <%%= yield %>
 
       </div>
+    </div>
+
+    <div style="z-index: 10" class="uk-position-fixed uk-position-bottom uk-background-muted">
+      <hr class="uk-margin-remove" />
+      <%%= render 'shared/footer', function_keys: @function_keys %>
     </div>
   </body>
 </html>

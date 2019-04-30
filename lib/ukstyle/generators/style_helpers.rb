@@ -15,7 +15,7 @@ module Ukstyle
         select: 'uk-select uk-width-large'
       }
 
-      private
+      # private
 
       def field_style(field_type)
         FIELD_STYLE_MAP[field_type&.to_sym]

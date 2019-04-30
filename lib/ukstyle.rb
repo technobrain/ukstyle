@@ -14,4 +14,6 @@ require 'ukstyle/generators/scaffold_controller/scaffold_controller_generator'
 
 module Ukstyle
   # Your code goes here...
+  Rails::Generators::NamedBase.include Generators::StyleHelpers
 end
+
