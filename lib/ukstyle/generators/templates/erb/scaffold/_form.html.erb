@@ -26,7 +26,7 @@
       <%%= form.password_field :password_confirmation, class: '<%= field_style(attribute.field_type) %>' %>
     </div>
 <% else -%>
-    <%%= form.label :<%= attribute.column_name %>, class: 'uk-form-label uk-text-right uk-margin-right' %>
+    <%%= form.label :<%= attribute.column_name %>, class: 'uk-form-label' %>
     <div class="uk-form-controll">
       <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, <%= attribute.field_type == :date_select ? ' {},' : '' %>class: '<%= field_style(attribute.field_type) %>' %>
     </div>
