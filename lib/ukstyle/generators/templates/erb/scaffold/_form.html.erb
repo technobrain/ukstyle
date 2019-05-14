@@ -15,19 +15,19 @@
   <div class="field uk-margin">
 <% if attribute.password_digest? -%>
     <%%= form.label :password %>
-    <div class="uk-form-controll">
+    <div class="uk-form-controls">
       <%%= form.password_field :password, class: '<%= field_style(attribute.field_type) %>' %>
     </div>
   </div>
 
   <div class="field uk-margin">
     <%%= form.label :password_confirmation %>
-    <div class="uk-form-controll">
+    <div class="uk-form-controls">
       <%%= form.password_field :password_confirmation, class: '<%= field_style(attribute.field_type) %>' %>
     </div>
 <% else -%>
     <%%= form.label :<%= attribute.column_name %>, class: 'uk-form-label' %>
-    <div class="uk-form-controll">
+    <div class="uk-form-controls">
       <%%= form.<%= attribute.field_type %> :<%= attribute.column_name %>, <%= attribute.field_type == :date_select ? ' {},' : '' %>class: '<%= field_style(attribute.field_type) %>' %>
     </div>
 <% end -%>
